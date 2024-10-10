@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Salão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .show-hide-btn, button {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+        }
+        .show-hide-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+        button.edit {
+            background-color: #ffc107;
+            color: #fff;
+        }
+        button.delete {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        button.cancel {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+.salao{
+           text-align: right;
+           margin-top: 10px;
+           margin-right: 10px; 
+           border: none;          
+        }
+ .meta{
+            background: blue;
+            margin-right: 10px;
+            color: white;
+            padding: 1px;
+            border: none;
+            border-radius: 2px;
+        }
+        a{
+            background:rgb(15, 235, 62);
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+        }
+       form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /**/
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .containers {
+            width: 90%;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .tabs ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .tabs ul li {
+            flex: 1;
+        }
+        
+        .tabs ul li a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .tabs ul li a:hover,
+        .tabs ul li a.active {
+            background-color: #555;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        #servicos-joao,
+        #servicos-marcos,
+        #servicos-henrique,
+        #relatorio-joao,
+        #relatorio-marcos,
+        #relatorio-henrique {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        form input, form select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 50%;
+        }
+        
+        form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        form button:hover {
+            background-color: #555;
+        }
+        .labes{
+            color: black;
+            font-weight: bold;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center; /* Alinha verticalmente os itens ao centro */
+            gap: 10px;
+            width: 20%; /* Espaçamento horizontal entre os itens */
+            margin-bottom: 30px;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center; /* Alinha o texto do label com o input */
+            font-size: 1rem;
+            gap: 5px; /* Espaçamento entre o input e o texto */
+        }
+        
+        .radio-group input[type="radio"] {
+            margin: 0; /* Remove qualquer margem padrão que possa causar desalinhamento */
+        }
+        .radio-group input[type="radio"] {
+            transform: scale(1.5); /* Aumenta o tamanho do input radio */
+            margin-right: 5px; /* Ajusta o espaço entre o input e o label */
+        }
+        .relatorio11{                       
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .relatorio{
+            background: rgb(231, 233, 232);
+            width: 120px; margin-right: 2px;
+            border-radius: 10px;
+            height: 60px;
+            font-size: 15px;
+            padding: 5px;
+        }
+        .desc{
+            width: 130px;
+        }
+.servicos {
+    flex-wrap: wrap;
+    width: 100%; /* Ajuste conforme necessário */
+}
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #ccc; /* opcional: adiciona uma borda ao redor da tabela */
+    padding: 10px; /* opcional: adiciona espaçamento ao redor da tabela */
+}
+@media (max-width: 700px) {
+    .radio-group {
+        width: 100%; 
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens quebrem a linha quando não houver espaço suficiente */
+        justify-content: flex-start; /* Alinha os itens no início da linha */
+        gap: 10px; 
+    }
+    
+    .radio-group label {
+        display: block; /* Faz com que os labels apareçam em blocos individuais */
+        margin-right: 0; /* Remove o espaçamento à direita dos labels */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="container">
+        <h1>Sistema de Salão</h1>
+        
+        <button  onclick="togglePage()">Mostrar/Esconder</button>
+        <div id="pag" style="display: none;">  
+            
+            
+            <button class="show-hide-btn" onclick="toggleFormOne()">Adicionar Transação</button>
+            <form id="transaction-form" action="/transacao" method="post" style="display:none;">
+                <h2>Adicionar Nova Transação</h2>
+                <label class="labes" for="edit-nome_do_item">Descrição:</label>
+                <input style="width: 180px;" type="text" id="edit-nome_do_item" name="nome_do_item" >     
+                <label class="labes" for="tipo">Tipo:</label>
+                <div class="radio-group">
+                    <input type="radio" id="entrada" name="tipo" value="entrada" required>
+                    <label for="entrada">Entrada</label>
+                    <input type="radio" id="saida" name="tipo" value="saida" required>
+                    <label for="saida">Saída</label>
+                </div>
+           
+                <label class="labes" for="servico">Serviço:</label>
+                <div class="radio-group">
+                    <input type="radio" id="combo" name="servico" value="combo" required>
+                    <label for="sobrancelha">Combo</label>
+    
+                    <input type="radio" id="sobrancelha" name="servico" value="sobrancelha" required>
+                    <label for="sobrancelha">Sobrancelha</label>
+                
+                    <input type="radio" id="barba" name="servico" value="barba" required>
+                    <label for="barba">Barba</label>
+                
+                    <input type="radio" id="corte" name="servico" value="corte" required>
+                    <label for="corte">Corte</label>
+                
+                    <input type="radio" id="infantil" name="servico" value="infantil" required>
+                    <label for="navalhado_infantil">Infantil</label><br><br>
+                
+                    <input type="radio" id="tesousa" name="servico" value="tesousa" required>
+                    <label for="tesousa">Tesousa</label>
+                
+                    <input type="radio" id="hidratacao" name="servico" value="hidratacao" required>
+                    <label for="hidratacao">Hidratação</label>
+                
+                    <input type="radio" id="produto" name="servico" value="produto" required>
+                    <label for="produto">Produto</label>
+    
+                    <input type="radio" id="selagem" name="servico" value="selagem" required>
+                    <label for="selagem">Selagem</label>
+    
+                    <input type="radio" id="saida" name="servico" value="saida" required>
+                    <label for="saida">Sal/val/saída</label>  
+    
+                    <input type="radio" id="vale" name="servico" value="vale" required>
+                    <label for="saida">Vale</label>           
+                    </div>
+        
+        
+            
+                <label class="labes" for="valor">Valor:</label>
+                <input style="width: 120px;" type="number" id="valor" name="valor" step="0.01" required>      
+                
+            
+                <label class="labes" for="forma_pagamento">Forma de Pagamento:</label>
+                <div class="radio-group">
+        <input type="radio" id="pix" name="forma_pagamento" value="Pix" required>
+        <label for="pix">Pix</label>
+        <input type="radio" id="cartao" name="forma_pagamento" value="Cartao" required>
+        <label for="cartao">Cartão</label>
+        <input type="radio" id="dinheiro" name="forma_pagamento" value="Dinheiro" required>
+        <label for="dinheiro">Dinheiro</label>
+    </div>
+    
+            
+                <label class="labes" for="barbeiro_id">Barbeiro:</label>
+                <div class="radio-group">
+                    <% barbeiros.forEach(barbeiro => { %>
+                        <input type="radio" id="barbeiro_<%= barbeiro.id %>" name="barbeiro_id" value="<%= barbeiro.id %>" required>
+                        <label for="barbeiro_<%= barbeiro.id %>"><%= barbeiro.nome %></label>
+                    <% }) %>
+    
+                </div>        
+                <button type="submit">Adicionar</button>
+            </form>
+            <button class="show-hide-btn" onclick="toggleFormTwo()">Cadastro de Barbeiros</button>
+              <div id="barbeiro" style="display:none;">          
+            <form id="barbeiroForm" >
+                <label for="nome">Nome do Barbeiro:</label>
+                <input type="text" id="nome" name="nome" required>
+                <button type="submit">Cadastrar Barbeiro</button>
+            </form>
+        
+            
+            <ul id="barbeiroList">
+                <% barbeiros.forEach(barbeiro => { %>
+                    <li>
+                        <%= barbeiro.nome %>
+                        <button onclick="deleteBarbeiro(<%= barbeiro.id %>)">Excluir</button>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+         <button id="toggleTableBtn1">Ver relatório</button>   
+         <div class="salao"><a class="meta" href="/relatorio-mensal">Relatórios</a></div>
+
+        <h2>Barbeiros</h2>
+<div class="table-wrapper">
+        <table id="transacoesTable1" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Total de servicos</th>
+                    <th>Total de produtos</th>
+                    <th>Total de rendimento</th>
+                    <th>Total de Entrada</th>
+                    <th>Total de Saída</th>
+                    <th>Saldo</th>
+                    <th>Total Entrada do Dia</th>
+                    <th>Total Saída do Dia</th>
+                    <th>Total Entrada da Semana</th>
+                    <th>Total Saída da Semana</th>
+                    <th>Total Entrada do Mês</th>
+                    <th>Total Saída do Mês</th>
+                </tr>
+            </thead>
+             <tbody>
+                <% 
+const formatNumber = (value) => {
+    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+};
+
+barbeiros.forEach(barbeiro => { 
+%>
+    <tr>
+        <td><%= barbeiro.nome %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_entrada_servicos || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.comissao_produtos || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_rendimento || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_entrada || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_saida || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.saldo || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_entrada_dia || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_saida_dia || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_entrada_semana || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_saida_semana || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_entrada_mes || 0) %></td>
+        <td>R$ <%= formatNumber(barbeiro.total_saida_mes || 0) %></td>
+    </tr>
+<% }) %>
+            </tbody>
+        </table>
+</div>
+       <button id="toggleTableBtn" style="background-color: #ffc107;">Mostrar Transações</button>
+
+<h2>Transações</h2>
+<table id="transacoesTable" style="display:none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Serviços</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Descrição</th>
+                    <th>Barbeiro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% transacoes.forEach(transacao => { %>
+                    <tr>
+                        <td><%= transacao.id %></td>
+                        <td><%= transacao.servico %></td>
+                        <td><%= transacao.tipo %></td>
+                        <td>R$ <%= transacao.valor %></td>                        
+                        <td><%= transacao.data %></td>
+                        <td><%= transacao.forma_pagamento %></td>
+                        <td><%= transacao.nome_do_item %></td>
+                        <td><%= transacao.barbeiro %></td>
+                        <td>
+                            <button class="edit" onclick="editTransaction('<%= transacao.id %>', '<%= escape(transacao.nome_do_item) %>', '<%= transacao.tipo %>', '<%= transacao.valor %>', '<%= transacao.data %>', '<%= transacao.forma_pagamento %>', '<%= transacao.barbeiro_id %>')">Editar</button>
+
+
+                            <form action="/delete-transacao" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="<%= transacao.id %>">
+                                <button class="delete" type="submit">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <form id="edit-transaction-form" action="/update-transacao" method="post" style="display:none;">
+            <h2>Editar Transação</h2>
+            <input type="hidden" id="edit-id" name="id">
+            
+            <label for="edit-nome_do_item">Descrição:</label>
+            <input type="text" id="edit-nome_do_item-modal" name="nome_do_item" required>
+
+            <label for="edit-tipo">Tipo:</label>
+            <select id="edit-tipo" name="tipo" required>
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+            </select>
+
+            <label for="edit-valor">Valor:</label>
+            <input type="number" id="edit-valor" name="valor" step="0.01" required>
+
+            <label for="edit-data">Data:</label>
+            <input type="date" id="edit-data" name="data" required>
+
+            <label for="edit-forma_pagamento">Forma de Pagamento:</label>
+            <select id="edit-forma_pagamento" name="forma_pagamento" required>
+                <option value="Pix">Pix</option>
+                <option value="Cartao">Cartão</option>
+                <option value="Dinheiro">Dinheiro</option>
+            </select>
+
+            <label for="edit-barbeiro_id">Barbeiro:</label>
+            <select id="edit-barbeiro_id" name="barbeiro_id" required>
+                <% barbeiros.forEach(barbeiro => { %>
+                    <option value="<%= barbeiro.id %>"><%= barbeiro.nome %></option>
+                <% }) %>
+            </select>
+
+            <button type="submit">Salvar Alterações</button>
+            <button type="button" class="cancel" onclick="cancelEdit()">Cancelar</button>
+        </form>
+
+        <h2>Relatório Geral</h2>
+        <div class="relatorio11">
+        <p class="relatorio">Saldo Total: R$ <%= relatorio.saldo_total %></p>
+        <p class="relatorio">Total de Entrada: R$ <%= relatorio.total_entrada %></p>
+        <p class="relatorio">Total de Saida: R$ <%= relatorio.total_saida %></p>
+        <p class="relatorio">Total Entrada do Dia: R$ <%= relatorio.total_entrada_dia %></p>
+        <p class="relatorio">Total Saida do Dia: R$ <%= relatorio.total_saida_dia %></p>
+        <p class="relatorio">Total Entrada da Semana: R$ <%= relatorio.total_entrada_semana %></p>
+        <p class="relatorio">Total Saida da Semana: R$ <%= relatorio.total_saida_semana %></p>
+        <p class="relatorio">Total Entrada do Mês: R$ <%= relatorio.total_entrada_mes %></p>
+        <p class="relatorio">Total Saida do Mês: R$ <%= relatorio.total_saida_mes %></p>
+    </div>
+<h2>Fechamento de Caixa</h2>
+        <form action="/fechar-caixa" method="POST">
+            <button type="submit">Fechar Caixa</button>
+        </form> 
+    </div>
+    <div class="containers">
+        <h1>Relatório de Barbeiros</h1>
+    
+        <div class="tabs">
+            <ul>
+                <li><a href="#tab-joao" onclick="verificarSenha('joao', 1)">Júnior</a></li>
+                <li><a href="#tab-marcos" onclick="verificarSenha('marcos', 2)">Kiko</a></li>
+                <li><a href="#tab-henrique" onclick="verificarSenha('henrique', 3)">Deivid</a></li>
+            </ul>
+    
+            <!-- Aba do Júnior -->
+            <div id="tab-joao" class="tab-content" style="display: none;">
+                <h2>Serviços Realizados por Júnior</h2>
+                <div id="servicos-joao"></div>
+    
+                <h2>Relatório de Rendimentos</h2>
+                <div id="relatorio-joao"></div>
+    
+                <!-- Toggle button that controls form display -->
+                <button class="show-hide-btn" onclick="toggleForm('transaction-form-joao')">Adicionar Transação</button>
+    
+                <!-- Form for adding a new transaction for Júnior -->
+                <form id="transaction-form-joao" action="/transacao" method="post" style="display:none;">
+                    <h2>Adicionar Nova Transação</h2>
+                    <label class="labes" for="edit-nome_do_item">Descrição:</label>
+                    <input style="width: 180px;" type="text" id="edit-nome_do_item" name="nome_do_item" required>
+    
+                    <label class="labes" for="tipo">Tipo:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="entrada-joao" name="tipo" value="entrada" required>
+                        <label for="entrada-joao">Entrada</label>
+                        <input type="radio" id="saida-joao" name="tipo" value="saida" required>
+                        <label for="saida-joao">Saída</label>
+                    </div>
+    
+                    <!-- Services radio buttons -->
+                    <label class="labes" for="servico">Serviço:</label>
+            <div class="radio-group">
+                <input type="radio" id="combo" name="servico" value="combo" required>
+                <label for="sobrancelha">Combo</label>
+
+                <input type="radio" id="sobrancelha" name="servico" value="sobrancelha" required>
+                <label for="sobrancelha">Sobrancelha</label>
+            
+                <input type="radio" id="barba" name="servico" value="barba" required>
+                <label for="barba">Barba</label>
+            
+                <input type="radio" id="corte" name="servico" value="corte" required>
+                <label for="corte">Corte</label>
+            
+                <input type="radio" id="infantil" name="servico" value="infantil" required>
+                <label for="navalhado_infantil">Infantil</label><br><br>
+            
+                <input type="radio" id="tesousa" name="servico" value="tesousa" required>
+                <label for="tesousa">Tesousa</label>
+            
+                <input type="radio" id="hidratacao" name="servico" value="hidratacao" required>
+                <label for="hidratacao">Hidratação</label>
+            
+                <input type="radio" id="produto" name="servico" value="produto" required>
+                <label for="produto">Produto</label>
+
+                <input type="radio" id="selagem" name="servico" value="selagem" required>
+                <label for="selagem">Selagem</label>
+
+                <input type="radio" id="vale" name="servico" value="vale" required>
+                <label for="vale">vale</label>           
+                </div>
+    
+    
+                    <label class="labes" for="valor">Valor:</label>
+                    <input style="width: 120px;" type="number" id="valor-joao" name="valor" step="0.01" required>
+    
+                    <label class="labes" for="forma_pagamento">Forma de Pagamento:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="pix-joao" name="forma_pagamento" value="Pix" required>
+                        <label for="pix-joao">Pix</label>
+                        <input type="radio" id="cartao-joao" name="forma_pagamento" value="Cartao" required>
+                        <label for="cartao-joao">Cartão</label>
+                        <input type="radio" id="dinheiro-joao" name="forma_pagamento" value="Dinheiro" required>
+                        <label for="dinheiro-joao">Dinheiro</label>
+                    </div>
+    
+                    <!-- Selection for barber, already filled in with Júnior -->
+                    <label class="labes" for="edit-barbeiro_id">Barbeiro:</label>
+                    <select id="edit-barbeiro_id" name="barbeiro_id" required disabled>
+                        <% barbeiros.forEach(barbeiro => { %>
+                            <option value="<%= barbeiro.id %>" <%= barbeiro.id === 1 ? 'selected' : '' %>>
+                                <%= barbeiro.nome %>
+                            </option>
+                        <% }) %>
+                    </select>
+                    <input type="hidden" name="barbeiro_id" value="1">
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+        
+    
+    
+
+    
+            <!-- Aba do Kiko -->
+            <div id="tab-marcos" class="tab-content" style="display: none;">
+                <h2>Serviços Realizados por Kiko</h2>
+                <div id="servicos-marcos"></div>
+    
+                <h2>Relatório de Rendimentos</h2>
+                <div id="relatorio-marcos"></div>
+    
+                <!-- Formulário de transação para Kiko -->
+                <button class="show-hide-btn" onclick="toggleForm('transaction-form-marcos')">Adicionar Transação</button>
+    
+                <!-- Form for adding a new transaction for Júnior -->
+                <form id="transaction-form-marcos" action="/transacao" method="post" style="display:none;">
+                    <h2>Adicionar Nova Transação</h2>
+                    <label class="labes" for="edit-nome_do_item-marcos">Descrição:</label>
+                    <input style="width: 180px;" type="text" id="edit-nome_do_item-marcos" name="nome_do_item" required>
+    
+                    <label class="labes" for="tipo">Tipo:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="entrada-joao" name="tipo" value="entrada" required>
+                        <label for="entrada-joao">Entrada</label>
+                        <input type="radio" id="saida-joao" name="tipo" value="saida" required>
+                        <label for="saida-joao">Saída</label>
+                    </div>
+    
+                    <!-- Services radio buttons -->
+                    <label class="labes" for="servico">Serviço:</label>
+            <div class="radio-group">
+                <input type="radio" id="combo" name="servico" value="combo" required>
+                <label for="sobrancelha">Combo</label>
+
+                <input type="radio" id="sobrancelha" name="servico" value="sobrancelha" required>
+                <label for="sobrancelha">Sobrancelha</label>
+            
+                <input type="radio" id="barba" name="servico" value="barba" required>
+                <label for="barba">Barba</label>
+            
+                <input type="radio" id="corte" name="servico" value="corte" required>
+                <label for="corte">Corte</label>
+            
+                <input type="radio" id="infantil" name="servico" value="infantil" required>
+                <label for="navalhado_infantil">Infantil</label><br><br>
+            
+                <input type="radio" id="tesousa" name="servico" value="tesousa" required>
+                <label for="tesousa">Tesousa</label>
+            
+                <input type="radio" id="hidratacao" name="servico" value="hidratacao" required>
+                <label for="hidratacao">Hidratação</label>
+            
+                <input type="radio" id="produto" name="servico" value="produto" required>
+                <label for="produto">Produto</label>
+
+                <input type="radio" id="selagem" name="servico" value="selagem" required>
+                <label for="selagem">Selagem</label>
+
+                <input type="radio" id="vale" name="servico" value="vale" required>
+                <label for="saida">Vale</label>           
+                </div>
+    
+    
+                    <label class="labes" for="valor">Valor:</label>
+                    <input style="width: 120px;" type="number" id="valor-joao" name="valor" step="0.01" required>
+    
+                    <label class="labes" for="forma_pagamento">Forma de Pagamento:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="pix-joao" name="forma_pagamento" value="Pix" required>
+                        <label for="pix-joao">Pix</label>
+                        <input type="radio" id="cartao-joao" name="forma_pagamento" value="Cartao" required>
+                        <label for="cartao-joao">Cartão</label>
+                        <input type="radio" id="dinheiro-joao" name="forma_pagamento" value="Dinheiro" required>
+                        <label for="dinheiro-joao">Dinheiro</label>
+                    </div>
+    
+                    <!-- Selection for barber, already filled in with Júnior -->
+                    <label class="labes" for="edit-barbeiro_id">Barbeiro:</label>
+                    <select id="edit-barbeiro_id" name="barbeiro_id" required disabled>
+                        <% barbeiros.forEach(barbeiro => { %>
+                            <option value="<%= barbeiro.id %>" <%= barbeiro.id === 2 ? 'selected' : '' %>>
+                                <%= barbeiro.nome %>
+                            </option>
+                        <% }) %>
+                    </select>
+                    <input type="hidden" name="barbeiro_id" value="2">
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+    
+            <!-- Aba do Deivid -->
+            <div id="tab-henrique" class="tab-content" style="display: none;">
+                <h2>Serviços Realizados por Deivid</h2>
+                <div id="servicos-henrique"></div>
+    
+                <h2>Relatório de Rendimentos</h2>
+                <div id="relatorio-henrique"></div>
+    
+                <!-- Formulário de transação para Deivid -->
+                <button class="show-hide-btn" onclick="toggleForm('transaction-form-henrique')">Adicionar Transação</button>
+    
+                <!-- Form for adding a new transaction for Júnior -->
+                <form id="transaction-form-henrique" action="/transacao" method="post" style="display:none;">
+                    <h2>Adicionar Nova Transação</h2>
+                    <label class="labes" for="transaction-form-henrique">Descrição:</label>
+                    <input style="width: 180px;" type="text" id="transaction-form-henrique" name="nome_do_item" required>
+    
+                    <label class="labes" for="tipo">Tipo:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="entrada-joao" name="tipo" value="entrada" required>
+                        <label for="entrada-joao">Entrada</label>
+                        <input type="radio" id="saida-joao" name="tipo" value="saida" required>
+                        <label for="saida-joao">Saída</label>
+                    </div>
+    
+                    <!-- Services radio buttons -->
+                    <label class="labes" for="servico">Serviço:</label>
+            <div class="radio-group">
+                <input type="radio" id="combo" name="servico" value="combo" required>
+                <label for="sobrancelha">Combo</label>
+
+                <input type="radio" id="sobrancelha" name="servico" value="sobrancelha" required>
+                <label for="sobrancelha">Sobrancelha</label>
+            
+                <input type="radio" id="barba" name="servico" value="barba" required>
+                <label for="barba">Barba</label>
+            
+                <input type="radio" id="corte" name="servico" value="corte" required>
+                <label for="corte">Corte</label>
+            
+                <input type="radio" id="infantil" name="servico" value="infantil" required>
+                <label for="navalhado_infantil">Infantil</label><br><br>
+            
+                <input type="radio" id="tesousa" name="servico" value="tesousa" required>
+                <label for="tesousa">Tesousa</label>
+            
+                <input type="radio" id="hidratacao" name="servico" value="hidratacao" required>
+                <label for="hidratacao">Hidratação</label>
+            
+                <input type="radio" id="produto" name="servico" value="produto" required>
+                <label for="produto">Produto</label>
+
+                <input type="radio" id="selagem" name="servico" value="selagem" required>
+                <label for="selagem">Selagem</label>
+
+                <input type="radio" id="vale" name="servico" value="vale" required>
+                <label for="saida">Vale</label>           
+                </div>
+    
+    
+                    <label class="labes" for="valor">Valor:</label>
+                    <input style="width: 120px;" type="number" id="valor-joao" name="valor" step="0.01" required>
+    
+                    <label class="labes" for="forma_pagamento">Forma de Pagamento:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="pix-joao" name="forma_pagamento" value="Pix" required>
+                        <label for="pix-joao">Pix</label>
+                        <input type="radio" id="cartao-joao" name="forma_pagamento" value="Cartao" required>
+                        <label for="cartao-joao">Cartão</label>
+                        <input type="radio" id="dinheiro-joao" name="forma_pagamento" value="Dinheiro" required>
+                        <label for="dinheiro-joao">Dinheiro</label>
+                    </div>
+    
+                    <!-- Selection for barber, already filled in with Júnior -->
+                    <label class="labes" for="edit-barbeiro_id">Barbeiro:</label>
+                    <select id="edit-barbeiro_id" name="barbeiro_id" required disabled>
+                        <% barbeiros.forEach(barbeiro => { %>
+                            <option value="<%= barbeiro.id %>" <%= barbeiro.id === 3 ? 'selected' : '' %>>
+                                <%= barbeiro.nome %>
+                            </option>
+                        <% }) %>
+                    </select>
+                    <input type="hidden" name="barbeiro_id" value="3">
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleFormOne() {
+            const form = document.getElementById('transaction-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        function toggleFormTwo() {
+            const form = document.getElementById('barbeiro');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        function toggleFormThree() {
+            const form = document.getElementById('barbeiroList');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        /*function formatDateToISO(dateStr) {
+            if (!dateStr) {
+                console.error('Data fornecida é inválida:', dateStr);
+                return ''; // Retorna uma string vazia ou um valor padrão
+            }
+        
+            const [day, month, year] = dateStr.split('/').map(Number);
+        
+            // Verificar se o ano, mês e dia são números válidos
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                console.error('Data fornecida não é válida:', dateStr);
+                return ''; // Retorna uma string vazia ou um valor padrão
+            }
+        
+            return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        }*/
+        function editTransaction(id, nome_do_item, tipo, valor, data, forma_pagamento, barbeiro_id) {
+            console.log("Valores recebidos:", { id, nome_do_item, tipo, valor, data, forma_pagamento, barbeiro_id });
+            alert("barbeiro_id:", barbeiro_id);
+            console.log("barbeiro_id:", barbeiro_id);
+            const form = document.getElementById('edit-transaction-form');
+            form.style.display = 'block';
+            const formattedDate = data.split('/').reverse().join('-');
+            document.getElementById('edit-id').value = id;
+            document.getElementById('edit-nome_do_item-modal').value = nome_do_item;
+            document.getElementById('edit-tipo').value = tipo;
+            document.getElementById('edit-valor').value = valor;
+            document.getElementById('edit-data').value = formattedDate;
+            const formaPagamentoElement = document.getElementById('edit-forma_pagamento');
+    if (formaPagamentoElement) {
+        formaPagamentoElement.value = forma_pagamento;
+        console.log("Valor do select forma_pagamento:", formaPagamentoElement.value); // Verifique se o valor é correto
+    } else {
+        console.error("Campo 'edit-forma_pagamento' não encontrado.");
+    }
+            const selectBarbeiro = document.getElementById('edit-barbeiro_id');
+            if (selectBarbeiro) {
+                selectBarbeiro.value = barbeiro_id;
+                console.log("Valor do selectBarbeiro:", selectBarbeiro.value); // Verifique se o valor é correto
+            }
+        }
+
+        function cancelEdit() {
+            const form = document.getElementById('edit-transaction-form');
+            form.style.display = 'none';
+        }
+
+
+    document.getElementById('toggleTableBtn').addEventListener('click', function() {
+        var table = document.getElementById('transacoesTable');
+        if (table.style.display === 'none') {
+            table.style.display = 'table'; // Ou 'block', se você preferir
+            this.textContent = 'Esconder Transações';
+        } else {
+            table.style.display = 'none';
+            this.textContent = 'Mostrar Transações';
+        }
+    });
+    document.getElementById('toggleTableBtn1').addEventListener('click', function() {
+        var table = document.getElementById('transacoesTable1');
+        if (table.style.display === 'none') {
+            table.style.display = 'table'; // Ou 'block', se você preferir
+            this.textContent = 'Esconder Relatório';
+        } else {
+            table.style.display = 'none';
+            this.textContent = 'Mostrar Relatório';
+        }
+    });
+   
+    ///////////
+    document.addEventListener('DOMContentLoaded', function() {
+        const senhas = {
+            joao: '123', 
+            marcos: '456',  
+            henrique: '789'  
+        };
+        const tabs = {
+            joao: document.getElementById('tab-joao'),
+            marcos: document.getElementById('tab-marcos'),
+            henrique: document.getElementById('tab-henrique')
+        };
+        const servicosJoao = document.getElementById('servicos-joao');
+        const servicosMarcos = document.getElementById('servicos-marcos');
+        const servicosHenrique = document.getElementById('servicos-henrique');
+        const tabsAbertas = {
+            joao: false,
+            marcos: false,
+            henrique: false
+        };
+    
+        window.verificarSenha = function(barbeiro, barbeiroId) {
+            if (!tabsAbertas[barbeiro]) {
+                const senha = prompt('Digite a senha para acessar os serviços de ' + barbeiro.charAt(0).toUpperCase() + barbeiro.slice(1));
+    
+                if (senha === senhas[barbeiro]) {
+                    tabsAbertas[barbeiro] = true; // Marca a aba como aberta
+                    mostrarOuEsconderTab(barbeiro, barbeiroId);
+                } else {
+                    alert('Senha incorreta! Acesso negado.');
+                }
+            } else {
+                mostrarOuEsconderTab(barbeiro, barbeiroId); // Alterna a visibilidade da aba sem pedir a senha
+            }
+        };
+    
+        function mostrarOuEsconderTab(barbeiro, barbeiroId) {
+            // Esconde todas as abas
+            for (let key in tabs) {
+                tabs[key].style.display = 'none';
+                tabsAbertas[key] = false; // Marca todas as abas como fechadas
+            }
+    
+            // Se a aba correspondente já estiver aberta, atualiza a página e esconde a aba
+            if (tabs[barbeiro].style.display === 'block') {
+                tabs[barbeiro].style.display = 'none'; // Esconde a aba
+                location.reload(); // Atualiza a página
+            } else {
+                // Mostra a aba correspondente
+                tabs[barbeiro].style.display = 'block'; // Mostra a aba
+                tabsAbertas[barbeiro] = true; // Marca a aba como aberta
+            }
+        }
+    
+        const relatorioJoao = document.getElementById('relatorio-joao');
+        const relatorioMarcos = document.getElementById('relatorio-marcos');
+        const relatorioHenrique = document.getElementById('relatorio-henrique');
+    
+        // Função para carregar os serviços de cada barbeiro
+        function carregarServicos(barbeiroId, element) {
+            fetch(`/barbeiro-servicos/${barbeiroId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Resultado", data);                    
+                    element.innerHTML = `
+               <button onclick="fecharAbas()">Fechar</button>
+                        <p>Total de transações: ${data.total_servicos}</p>
+                        <p>Cortes: ${data.cortes}</p>
+                        <p>Barbas: ${data.barbas}</p>
+                        <p>Sobrancelha: ${data.sobrancelha}</p>
+                        <p>Hidratacao: ${data.hidratacao}</p>
+                        <p>Selagem: ${data.selagem}</p>
+                        <p>Infantil: ${data.infantil}</p>
+                        <p>Tesousa: ${data.tesousa}</p>
+                        <p>Tesousa: ${data.combo}</p>
+                        <p>Produtos: ${data.produtos}</p>                       
+                        <p>Vale: ${data.vale}</p>`                        
+                    ;
+                });
+        }
+    
+        // Função para carregar o relatório de cada barbeiro
+        function carregarRelatorio(barbeiroId, element) {
+            fetch(`/barbeiro-relatorio/${barbeiroId}`)
+                .then(response => response.json())
+                .then(data => {
+                    let rendimentoServicos = parseFloat(data.rendimento_servicos) || 0;
+                    let comissaoProdutos = parseFloat(data.comissao_produtos) || 0;
+                    let totalRendimento = parseFloat(data.saldo) || 0;
+        
+                    // Limpa o conteúdo anterior
+                    element.innerHTML = '';
+        
+                    // Cria elementos para cada dado
+                    const rendimentoServicosP = document.createElement('p');
+                    rendimentoServicosP.textContent = `Rendimento em Serviços: R$${rendimentoServicos.toFixed(2)}`;
+        
+                    const comissaoProdutosP = document.createElement('p');
+                    comissaoProdutosP.textContent = `Comissão em Produtos: R$${comissaoProdutos.toFixed(2)}`;
+        
+                    const totalRendimentoP = document.createElement('p');
+                    totalRendimentoP.textContent = `Total de Rendimento: R$${totalRendimento.toFixed(2)}`;
+        
+                    // Adiciona os elementos ao DOM
+                    element.appendChild(rendimentoServicosP);
+                    element.appendChild(comissaoProdutosP);
+                    element.appendChild(totalRendimentoP);
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o relatório:', error);
+                });
+        }
+        
+    
+        carregarServicos(1, servicosJoao);
+        carregarServicos(2, servicosMarcos);
+        carregarServicos(3, servicosHenrique);
+    
+        carregarRelatorio(1, relatorioJoao);
+        carregarRelatorio(2, relatorioMarcos);
+        carregarRelatorio(3, relatorioHenrique);
+    
+        //const formRelatorioMensal = document.getElementById('relatorio-mensal-form');
+       // const relatorioMensal = document.getElementById('relatorio-mensal');
+    
+       // formRelatorioMensal.addEventListener('submit', function(e) {
+        //    e.preventDefault();
+         //   const mes = document.getElementById('mes').value;
+         //   const ano = document.getElementById('ano').value;
+    
+          //  fetch(`/relatorio-mensal/${mes}/${ano}`)
+           //     .then(response => response.json())
+           //     .then(data => {
+            //        relatorioMensal.innerHTML = `
+            //            <p>Receita Total: R$${data.receita_total.toFixed(2)}</p>
+            //            <p>Rendimentos Totais: R$${data.rendimentos_totais.toFixed(2)}</p>
+             //           <p>Despesas Totais: R$${data.despesas_totais.toFixed(2)}</p>
+             //       `;
+             //   });
+       // });
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tabs ul li a');
+        const tabContents = document.querySelectorAll('.tab-content');
+    
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (event) => {
+                event.preventDefault(); // Impede o comportamento padrão do link
+    
+                // Remove a classe 'active' de todas as abas e conteúdos
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+    
+                // Adiciona a classe 'active' ao conteúdo da aba clicada
+                document.querySelector(tab.getAttribute('href')).classList.add('active');
+            });
+        });
+    });
+    function esconder() {
+        const form = document.getElementById('transaction-form');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const deleteButtons = document.querySelectorAll('.delete');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Aqui pode estar o código para confirmação de exclusão
+                if (!confirm('Você tem certeza que deseja deletar?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+    function togglePage() {
+        const senhaCorreta = '123'; // Defina a senha desejada
+        const senha = prompt('Digite a senha para continuar:');
+    
+        if (senha === senhaCorreta) {
+            const elemento = document.getElementById('pag');
+            
+            // Alterna entre mostrar ou esconder o conteúdo
+            if (elemento.style.display === 'none') {
+                elemento.style.display = 'block'; // Mostra o conteúdo
+            } else {
+                elemento.style.display = 'none'; // Esconde o conteúdo
+            }
+        } else {
+            alert('Senha incorreta! Acesso negado.');
+        }
+    }
+    function fecharAbas() {
+        // Seleciona todas as abas abertas
+        const abas = document.querySelectorAll('.tab-content');
+
+        // Itera sobre todas as abas e fecha (oculta) as que estão abertas
+        abas.forEach(aba => {
+            aba.style.display = 'none';
+location.reload();
+        });
+    }
+    document.getElementById('barbeiroForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+    
+        const nome = document.getElementById('nome').value;
+    
+        try {
+            const response = await fetch('/barbeiros', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nome }),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                // Adiciona o barbeiro à lista
+                const barbeiroList = document.getElementById('barbeiroList');
+                barbeiroList.innerHTML += `<li>${data.barbeiro.nome} <button onclick="deleteBarbeiro(${data.barbeiro.id})">Excluir</button></li>`;
+                document.getElementById('nome').value = ''; // Limpa o campo
+            } else {
+                alert(data.error);
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar barbeiro:', error);
+        }
+    });
+    
+    async function deleteBarbeiro(id) {
+        try {
+            const response = await fetch(`/barbeiros/${id}`, {
+                method: 'DELETE',
+            });
+    
+            if (response.ok) {
+                // Remove o barbeiro da lista
+                document.querySelector(`li:has(button[onclick*="${id}"])`).remove();
+            } else {
+                const data = await response.json();
+                alert(data.error);
+            }
+        } catch (error) {
+            console.error('Erro ao excluir barbeiro:', error);
+        }
+    }
+    
+    </script>
+</body>
+</html>
